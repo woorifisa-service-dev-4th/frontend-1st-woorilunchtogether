@@ -1,6 +1,3 @@
 export default {
-    content: [
-      "./index.html",
-      "./list.html",
-    ],
-  }
+  content: ["./index.html", "./list.html"],
+};
