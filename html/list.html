@@ -1,1 +1,70 @@
 <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+          theme: {
+            extend: {
+              colors: {
+                clifford: '#da373d',
+              }
+            }
+          }
+          
+        }
+    </script>
+    <link rel="stylesheet" href="style.css">
+
+    
+</head>
+<body>
+    <header class="flex justify-center py-16">
+        <span class="text-7xl text-transparent bg-clip-text bg-gradient-to-r from-[#0C73B8]  to-[#20C4F4]">woori... 점심먹자</span>
+    </header>
+    <section class="flex justify-center items-center py-10 gap-5">
+        <span class="inline-block border-[#0C73B8] w-12 h-12 border-l-4 border-b-4 rotate-45"></span>
+        <div class="card">
+            <div class="card-front">
+                <div class="h-1/6">1팀</div>
+                <div class="h-5/6">
+                    <div class="h-full w-full outline-none resize-none bg-transparent text-white text-right align-bottom">이름</div>
+                </div>
+            </div>
+            <div class="card-back"></div>
+        </div>
+        <div class="card">
+            <div class="card-front">
+                <div class="h-1/6">2팀</div>
+                <div class="h-5/6">
+                    <div class="h-full w-full outline-none resize-none bg-transparent text-white text-right align-bottom">이름</div>
+                </div>
+            </div>
+            <div class="card-back"></div>
+        </div>
+        <div class="card">
+            <div class="card-front">
+                <div class="h-1/6">3팀</div>
+                <div class="h-5/6">
+                    <div class="h-full w-full outline-none resize-none bg-transparent text-white text-right align-bottom">이름</div>
+                </div>
+            </div>
+            <div class="card-back"></div>
+        </div>
+        <div class="card">
+            <div class="card-front">
+                <div class="h-1/6">4팀</div>
+                <div class="h-5/6">
+                    <div class="h-full w-full outline-none resize-none bg-transparent text-white text-right align-bottom">이름</div>
+                </div>
+            </div>
+            <div class="card-back"></div>
+        </div>
+        <span class="inline-block border-[#0C73B8] w-12 h-12 border-l-4 border-b-4 rotate-[-135deg]"></span>
+    </section>
+    
+</body>
+</html>
