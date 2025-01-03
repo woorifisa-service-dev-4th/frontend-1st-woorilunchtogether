@@ -21,6 +21,8 @@
 ![image](https://github.com/user-attachments/assets/20df8b7f-be07-4f84-a07f-1643bf1f98ad)
 - Slack bot을 활용하여 Event에 빠르게 대처 할 수 있도록한다.
 ![image](https://github.com/user-attachments/assets/17563a09-1b26-4363-8c8f-56b47a3ec4f0)
+- Github Project를 이용하여 할 일을 관리한다.
+![image](https://github.com/user-attachments/assets/00bacb4f-1227-4264-84a1-f489f1689b73)
 - HTML과 CSS 실습을 통해 개발 역량을 키운다.
 - CSS는 팀원 모두의 동의를 통해 Tailwind CSS를 활용하여 실습
 - Figma를 통해 간단한 디자인을 하고 디자인에 따른 CSS 적용 방식을 학습한다.
