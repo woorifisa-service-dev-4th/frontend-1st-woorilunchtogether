@@ -5,9 +5,9 @@
     transform-style: preserve-3d;
 }
 
-.card:hover {
+/* .card:hover {
     transform: perspective(800px) rotateY(180deg);
-}
+} */
 
 .card > * {
     grid-area: 1 / 1 / 1 / 1;
