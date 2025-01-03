@@ -17,3 +17,6 @@ console.log(name.length)
 for (let i = 0; i < address.length; i++) {
   console.log(`${i}: 주소: ${address[i]}, 대표음식: ${representative_food[i]}, 1인당 가격: ${price_per_person[i]}, 이름: ${name[i]}`);
 }
+
+
+export { address, representative_food, price_per_person, name };

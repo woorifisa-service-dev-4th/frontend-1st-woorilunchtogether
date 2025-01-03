@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,43 +8,44 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
-          theme: {
-            extend: {
-              colors: {
-                clifford: '#da373d',
-              }
+            theme: {
+                extend: {
+                    colors: {
+                        clifford: '#da373d',
+                    }
+                }
             }
-          }
-          
+
         }
     </script>
     <link rel="stylesheet" href="style.css">
 
-    
+
 </head>
+
 <body>
     <header class="flex justify-center py-16">
-        <span class="text-7xl text-transparent bg-clip-text bg-gradient-to-r from-[#0C73B8]  to-[#20C4F4]">woori... 점심먹자</span>
+        <span class="text-7xl text-transparent bg-clip-text bg-gradient-to-r from-[#0C73B8]  to-[#20C4F4]">woori...
+            점심먹자</span>
     </header>
+
+    <section id="result-container" class="py-10">
+        <div id="result" class="flex flex-col gap-4 justify-center items-center">
+            <!-- Dynamic content will be appended here -->
+        </div>
+    </section>
+
     <section class="flex justify-center items-center py-10 gap-5">
         <button class="inline-block border-[#0C73B8] w-12 h-12 border-l-4 border-b-4 rotate-45" id="prev"></button>
         <div id="card-container"></div>
-        <button class="inline-block border-[#0C73B8] w-12 h-12 border-l-4 border-b-4 rotate-[-135deg]" id="next"></button>
+        <button class="inline-block border-[#0C73B8] w-12 h-12 border-l-4 border-b-4 rotate-[-135deg]"
+            id="next"></button>
     </section>
-    
+
 </body>
 <script>
 
-
-    const data = [
-        { team: '1팀', name: ['이름1', '이름2'], back: ['김치도가1', 'IT상암타워', '10000', '김치찌개'] },
-        { team: '2팀', name: ['이름1', '이름2', '이름3'], back: ['김치도가2', 'IT상암타워', '10000', '김치찌개'] },
-        { team: '3팀', name: ['이름1', '이름2'], back: ['김치도가3', 'IT상암타워', '10000', '김치찌개'] },
-        { team: '4팀', name: ['이름1', '이름2', '이름3', '이름4'], back: ['김치도가4', 'IT상암타워', '10000', '김치찌개'] },
-        { team: '5팀', name: ['이름1', '이름2'], back: ['김치도가5', 'IT상암타워', '10000', '김치찌개'] },
-        { team: '6팀', name: ['이름1'], back: ['김치도가6', 'IT상암타워', '10000', '김치찌개'] },
-        // Add more data as needed
-    ];
+    const data = JSON.parse(localStorage.getItem('teamData')) || [];
 
     let currentIndex = 0;
 
@@ -70,21 +72,21 @@
                     <div>주력메뉴: ${data[i].back[3]}</div><br>
                 </div>
             `;
-            card.addEventListener('click', function() {
+            card.addEventListener('click', function () {
                 this.classList.toggle('card-back');
             });
             cardContainer.appendChild(card);
         }
     }
 
-    document.getElementById('prev').addEventListener('click', function() {
+    document.getElementById('prev').addEventListener('click', function () {
         if (currentIndex > 0) {
             currentIndex -= 4;
             renderCards();
         }
     });
 
-    document.getElementById('next').addEventListener('click', function() {
+    document.getElementById('next').addEventListener('click', function () {
         if (currentIndex + 4 < data.length) {
             currentIndex += 4;
             renderCards();
@@ -94,4 +96,6 @@
     renderCards();
 
 </script>
+
+
 </html>
