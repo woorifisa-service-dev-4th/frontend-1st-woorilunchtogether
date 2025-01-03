@@ -26,54 +26,72 @@
         <span class="text-7xl text-transparent bg-clip-text bg-gradient-to-r from-[#0C73B8]  to-[#20C4F4]">woori... 점심먹자</span>
     </header>
     <section class="flex justify-center items-center py-10 gap-5">
-        <span class="inline-block border-[#0C73B8] w-12 h-12 border-l-4 border-b-4 rotate-45"></span>
-        <div class="card">
-            <div class="card-front">
-                <div class="h-1/6">1팀</div>
-                <div class="h-5/6">
-                    <div class="h-full w-full outline-none resize-none bg-transparent text-white text-right align-bottom">이름</div>
-                </div>
-            </div>
-            <div class="card-back"></div>
-        </div>
-        <div class="card">
-            <div class="card-front">
-                <div class="h-1/6">2팀</div>
-                <div class="h-5/6">
-                    <div class="h-full w-full outline-none resize-none bg-transparent text-white text-right align-bottom">이름</div>
-                </div>
-            </div>
-            <div class="card-back"></div>
-        </div>
-        <div class="card">
-            <div class="card-front">
-                <div class="h-1/6">3팀</div>
-                <div class="h-5/6">
-                    <div class="h-full w-full outline-none resize-none bg-transparent text-white text-right align-bottom">이름</div>
-                </div>
-            </div>
-            <div class="card-back"></div>
-        </div>
-        <div class="card">
-            <div class="card-front">
-                <div class="h-1/6">4팀</div>
-                <div class="h-5/6">
-                    <div class="h-full w-full outline-none resize-none bg-transparent text-white text-right align-bottom">이름</div>
-                </div>
-            </div>
-            <div class="card-back"></div>
-        </div>
-        <span class="inline-block border-[#0C73B8] w-12 h-12 border-l-4 border-b-4 rotate-[-135deg]"></span>
+        <button class="inline-block border-[#0C73B8] w-12 h-12 border-l-4 border-b-4 rotate-45" id="prev"></button>
+        <div id="card-container"></div>
+        <button class="inline-block border-[#0C73B8] w-12 h-12 border-l-4 border-b-4 rotate-[-135deg]" id="next"></button>
     </section>
     
 </body>
 <script>
-    const cards = document.querySelectorAll('.card');
 
-    cards.forEach(card => {
-        card.addEventListener('click', () => {
-            card.classList.toggle('card-back');
-        });
-    });    
+
+    const data = [
+        { team: '1팀', name: ['이름1', '이름2'], back: ['김치도가1', 'IT상암타워', '10000', '김치찌개'] },
+        { team: '2팀', name: ['이름1', '이름2', '이름3'], back: ['김치도가2', 'IT상암타워', '10000', '김치찌개'] },
+        { team: '3팀', name: ['이름1', '이름2'], back: ['김치도가3', 'IT상암타워', '10000', '김치찌개'] },
+        { team: '4팀', name: ['이름1', '이름2', '이름3', '이름4'], back: ['김치도가4', 'IT상암타워', '10000', '김치찌개'] },
+        { team: '5팀', name: ['이름1', '이름2'], back: ['김치도가5', 'IT상암타워', '10000', '김치찌개'] },
+        { team: '6팀', name: ['이름1'], back: ['김치도가6', 'IT상암타워', '10000', '김치찌개'] },
+        // Add more data as needed
+    ];
+
+    let currentIndex = 0;
+
+    function renderCards() {
+        const cardContainer = document.getElementById('card-container');
+        cardContainer.innerHTML = '';
+        const endIndex = Math.min(currentIndex + 4, data.length);
+        for (let i = currentIndex; i < endIndex; i++) {
+            const card = document.createElement('div');
+            card.className = 'card';
+
+            const namesHtml = data[i].name.map(name => `<div>${name}</div>`).join('');
+            card.innerHTML = `
+                <div class="card-front">
+                    <div class="h-1/6">${data[i].team}</div>
+                    <div class="h-5/6">
+                        <div class="h-full w-full outline-none resize-none bg-transparent text-white text-right align-bottom flex flex-col-reverse">${namesHtml}</div>
+                    </div>
+                </div>
+                <div class="card-back">
+                    <div style="font-weight: bold; font-size: 1.2em;">가게명: ${data[i].back[0]}</div><br>
+                    <div>주소: ${data[i].back[1]}</div><br>
+                    <div>1인 평균 가격: ${data[i].back[2]}원</div><br>
+                    <div>주력메뉴: ${data[i].back[3]}</div><br>
+                </div>
+            `;
+            card.addEventListener('click', function() {
+                this.classList.toggle('card-back');
+            });
+            cardContainer.appendChild(card);
+        }
+    }
+
+    document.getElementById('prev').addEventListener('click', function() {
+        if (currentIndex > 0) {
+            currentIndex -= 4;
+            renderCards();
+        }
+    });
+
+    document.getElementById('next').addEventListener('click', function() {
+        if (currentIndex + 4 < data.length) {
+            currentIndex += 4;
+            renderCards();
+        }
+    });
+
+    renderCards();
+
 </script>
 </html>
