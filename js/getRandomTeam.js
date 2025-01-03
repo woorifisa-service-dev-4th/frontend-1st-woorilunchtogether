@@ -15,7 +15,7 @@ const getRandomNum = (limit, teamMemberNumber) => {
     const teamList = Array.from({ length: totalTeam }, () => []);
     numbers.forEach((num, idx) => {
         const teamIndex = idx % totalTeam;
-        teamList[teamIndex].push({ name: num });
+        teamList[teamIndex].push({ name: num + 1 });
     });
 
     return teamList.map((team, idx) => ({
