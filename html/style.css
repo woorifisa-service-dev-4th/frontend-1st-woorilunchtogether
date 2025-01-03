@@ -3,11 +3,8 @@
     transition: transform 0.3s;
     transform: perspective(800px) rotateY(0deg);
     transform-style: preserve-3d;
+    margin:5px;
 }
-
-/* .card:hover {
-    transform: perspective(800px) rotateY(180deg);
-} */
 
 .card > * {
     grid-area: 1 / 1 / 1 / 1;
@@ -16,14 +13,14 @@
     padding: 12px;
     border-radius: 8px;
     backface-visibility: hidden;
-  }
+}
 
 .card-front { 
-    background: linear-gradient(to bottom right,#0067AC, #FFFFFF);
-    color: white;
+    background: linear-gradient(to top left,#0067AC, #FFFFFF);
+    color: black;
 }
 .card-back {
-    background-color: #e2e8f0;
+    background-color: #D9D9D9;
     color: black;
     transform: rotateY(180deg);
 }
