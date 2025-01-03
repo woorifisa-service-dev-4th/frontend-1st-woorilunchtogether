@@ -17,6 +17,8 @@
 ![image](https://github.com/user-attachments/assets/800b0a4d-0657-4ae8-94a5-b77aa6b322b1)
 - Pull Request를 통해서 공통 Repo를 관리하는 방법을 배우고 Code Review를 통해서 서로의 코드를 논의한다.
 ![image](https://github.com/user-attachments/assets/79c2553c-ff71-411f-8511-c083b6cb268e)
+- Branch Protect를 이용하여 협업 환경이 망가질 것을 대비한다.
+![image](https://github.com/user-attachments/assets/20df8b7f-be07-4f84-a07f-1643bf1f98ad)
 - Slack bot을 활용하여 Event에 빠르게 대처 할 수 있도록한다.
 ![image](https://github.com/user-attachments/assets/17563a09-1b26-4363-8c8f-56b47a3ec4f0)
 - HTML과 CSS 실습을 통해 개발 역량을 키운다.
