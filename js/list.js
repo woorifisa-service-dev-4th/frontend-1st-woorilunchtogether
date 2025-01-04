@@ -41,7 +41,7 @@ function renderCards() {
                 <div>주소: ${data[i].back[1]}</div><br>
                 <div>1인 평균 가격: ${data[i].back[2]}원</div><br>
                 <div>주력메뉴: ${data[i].back[3]}</div><br>
-                <button class="bg-clifford text-white p-2 rounded-lg reset-btn" data-index="${i}">새로고침</button>
+                <button class="text-white p-2 rounded-lg reset-btn" data-index="${i}">새로고침</button>
             </div>
         `;
         card.addEventListener('click', function () {
