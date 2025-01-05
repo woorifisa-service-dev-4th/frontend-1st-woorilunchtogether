@@ -1,3 +1,6 @@
+import { name, address, price_per_person, representative_food } from '/js/database.js';
+import { getRanNum } from '/js/getRandomTeam.js';
+
 tailwind.config = {
     theme: {
         extend: {
@@ -38,6 +41,7 @@ function renderCards() {
                 <div>주소: ${data[i].back[1]}</div><br>
                 <div>1인 평균 가격: ${data[i].back[2]}원</div><br>
                 <div>주력메뉴: ${data[i].back[3]}</div><br>
+                <button class="text-white p-2 rounded-lg reset-btn" data-index="${i}">새로고침</button>
             </div>
         `;
         card.addEventListener('click', function () {
@@ -45,6 +49,21 @@ function renderCards() {
         });
         cardContainer.appendChild(card);
     }
+
+    document.querySelectorAll('.reset-btn').forEach(button => {
+        button.addEventListener('click', function (event) {
+            event.stopPropagation();
+            const index = this.getAttribute('data-index');
+            const randInt = getRanNum(name.length);
+
+            data[index].back[0] = name[randInt];
+            data[index].back[1] = address[randInt];
+            data[index].back[2] = price_per_person[randInt];
+            data[index].back[3] = representative_food[randInt];
+
+            renderCards();
+        });
+    });    
 }
 
 document.getElementById('prev').addEventListener('click', function () {
@@ -60,5 +79,6 @@ document.getElementById('next').addEventListener('click', function () {
         renderCards();
     }
 });
+
 
 renderCards();

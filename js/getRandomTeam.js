@@ -58,4 +58,9 @@ const getRandomTeam = ({ members, teamMemberNumber, separator }) => {
     }));
 };
 
-export { getRandomNum, getRandomTeam };
+function getRanNum(max) {
+    const randomIndex = Math.floor(Math.random() * (max));  
+    return randomIndex;
+}
+
+export { getRandomNum, getRandomTeam, getRanNum };
