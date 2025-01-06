@@ -29,6 +29,12 @@
 ![image](https://github.com/user-attachments/assets/1c4755bb-5da5-45f7-8162-90ed7af3d384)
 
 
+## css style 규칙
+
+![image](https://github.com/user-attachments/assets/a0572c01-2315-4bff-acb6-9c076362a0c6)
+
+
+
 ## 협업 규칙
 Branch Push는 무조건 생성한 branch로 진행
 <br>
