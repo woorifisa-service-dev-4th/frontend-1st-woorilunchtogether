@@ -70,3 +70,7 @@ ex: feat/1
   chore   : 기타 변경사항 (빌드 스크립트, 패키지 매니저 설정 수정 등)
 ```
 
+## Light House Report
+![image](https://github.com/user-attachments/assets/11c007e3-d425-455d-99a9-0cf1990b6292)
+
+
