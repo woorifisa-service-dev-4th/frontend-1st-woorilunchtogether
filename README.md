@@ -13,6 +13,7 @@
 
 
 ## demo 
+배포URL: https://woorifisa-service-dev-4th.github.io/frontend-1st-woorilunchtogether/
 
 <img src="https://github.com/user-attachments/assets/58b97835-eb96-47f1-ae34-106e8977cbc4" width="100%" height="100%" />
 
