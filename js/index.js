@@ -93,7 +93,7 @@ function showLoadingScreen() {
   loadingDiv.style.zIndex = "9999";
 
   const loadingImage = document.createElement("img");
-  loadingImage.src = "asset/component.png";
+  loadingImage.src = "/src/asset/component.png";
   loadingImage.alt = "로딩 중";
   loadingImage.style.width = "150px";
   loadingImage.style.marginBottom = "20px";
