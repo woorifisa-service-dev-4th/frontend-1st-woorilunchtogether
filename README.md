@@ -11,6 +11,13 @@
 
 더 나아가 점심을 같이 먹음으로써, 서로 하고 있는 공부나, 채용 동향, 기술 동향에 대해서 이야기를 나눌 수 있으며 이러한 공통적인 이야기는 서로의 발전에 도움이 된다. 많은 이용을 통해 서로 친해지자.
 
+
+## demo 
+
+<img src="https://github.com/user-attachments/assets/58b97835-eb96-47f1-ae34-106e8977cbc4" width="100%" height="100%" />
+
+
+
 ## 프로젝트 목표(협업, Github 활용, Slack, HTML, CSS(Tailwind CSS), Javascript, Figma)
 - ISSUE를 활용하여 서로 할 일을 공유하며 개발 현황을 서로가 알 수 있다.
 - ISSUE를 활용하여 발생한 버그를 해결한다.
