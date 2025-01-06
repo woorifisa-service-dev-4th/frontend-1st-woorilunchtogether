@@ -1,10 +1,10 @@
-import { getRandomNum, getRandomTeam, getRanNum } from "./js/getRandomTeam.js";
+import { getRandomNum, getRandomTeam, getRanNum } from "./getRandomTeam.js";
 import {
   name,
   address,
   price_per_person,
   representative_food,
-} from "./js/database.js";
+} from "./database.js";
 // Database
 
 let teamResult = [];

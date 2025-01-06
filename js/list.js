@@ -1,5 +1,5 @@
-import { name, address, price_per_person, representative_food } from './js/database.js';
-import { getRanNum } from './js/getRandomTeam.js';
+import { name, address, price_per_person, representative_food } from './database.js';
+import { getRanNum } from './getRandomTeam.js';
 
 tailwind.config = {
     theme: {
