@@ -17,7 +17,11 @@ function team() {
     10
   );
   const useRandomNumbers = document.getElementById("useRandomNumbers").checked;
-  const teamMemberNumber = 4;
+  const useEachTeamPerson = document.getElementById("useEachTeamPerson") ? true : false;
+  let teamMemberNumber = 4;
+  if(useEachTeamPerson) {
+    teamMemberNumber = parseInt(document.getElementById("useEachTeamPersonNum").value, 10);
+  }
 
   if (useRandomNumbers && randomNumberLimit) {
     // Generate teams with random numbers
