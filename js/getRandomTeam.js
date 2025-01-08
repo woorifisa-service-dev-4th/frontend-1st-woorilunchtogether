@@ -1,4 +1,12 @@
-const splitter = (str, separator) => str.split(separator);
+const splitter = (str, separator) => {
+    let memberList = [];
+    if(separator === ' ') {
+        memberList = str.split(/\s+/);
+    } else {
+        memberList = str.split(separator);
+    }
+    return memberList;
+}
 
 const generateRandomKey = () => Math.random();
 
@@ -26,7 +34,6 @@ const getRandomNum = (limit, teamMemberNumber) => {
 
 const getRandomTeam = ({ members, teamMemberNumber, separator }) => {
     const memberList = splitter(members, separator);
-
     if (memberList.length > 40) {
         alert('최대 40명까지만 입력 가능합니다.');
         return [];
