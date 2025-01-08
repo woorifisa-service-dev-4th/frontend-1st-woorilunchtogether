@@ -17,7 +17,7 @@ function team() {
     10
   );
   const useRandomNumbers = document.getElementById("useRandomNumbers").checked;
-  const useEachTeamPerson = document.getElementById("useEachTeamPerson") ? true : false;
+  const useEachTeamPerson = document.getElementById("useEachTeamPerson").checked ? true : false;
   let teamMemberNumber = 4;
   if(useEachTeamPerson) {
     teamMemberNumber = parseInt(document.getElementById("useEachTeamPersonNum").value, 10);
