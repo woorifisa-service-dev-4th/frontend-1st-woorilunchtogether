@@ -18,7 +18,6 @@ function team() {
   );
   const useRandomNumbers = document.getElementById("useRandomNumbers").checked;
   const teamMemberNumber = 4;
-  let separator = " ";
 
   if (useRandomNumbers && randomNumberLimit) {
     // Generate teams with random numbers
@@ -26,14 +25,11 @@ function team() {
   } else if (separatorElement) {
     const members = document.getElementById("members").value.trim();
     // Generate teams with member names
-    separator = " ";
+    const separator = " ";
     teamResult = getRandomTeam({ members, teamMemberNumber, separator });
   } else if (!separatorElement) {
     const members = document.getElementById("members").value;
-    let sep_value = document.querySelector('input[name="splitType"]:checked').value;
-    if(sep_value == 'comma') {
-      separator = ",";
-    }
+    const separator = ",";
     teamResult = getRandomTeam({ members, teamMemberNumber, separator });
   } else {
     throw new Error(
