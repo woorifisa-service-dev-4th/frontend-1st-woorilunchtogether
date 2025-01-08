@@ -47,7 +47,7 @@
           <!-- toggle -->
           <div class="flex flex-col justify-center items-center">
             <div>
-              <label class="inline-flex items-center cursor-pointer">
+              <label class="inline-flex items-center cursor-pointer my-2">
                 <input
                   type="radio"
                   id="splitStandard"
@@ -66,7 +66,7 @@
               </label>
             </div>
             <div>
-              <label class="inline-flex items-center cursor-pointer">
+              <label class="inline-flex items-center cursor-pointer my-2">
                 <input
                   type="radio"
                   id="splitComma"
@@ -86,20 +86,38 @@
           </div>
           <!-- 체크박스 -->
           <div
-            class="pb-2 right flex flex-col gap-2 justify-center items-center"
+            class="pb-2 right flex gap-2 justify-center items-center"
           >
             <label class="pl-2 flex items-center gap-2 text-sm pr-2">
-              <input type="checkbox" id="useRandomNumbers" class="w-4 h-4 border-gray-300 rounded" />
-              랜덤 숫자로 메이트 추출
+              <div>
+                <div>
+                  <input type="checkbox" id="useRandomNumbers" class="w-4 h-4 border-gray-300 rounded" />
+                  랜덤 숫자로 메이트 추출
+                  <input
+                    type="text"
+                    id="randomNumberLimit"
+                    maxlength="5"
+                    placeholder="명"
+                    class="w-[90px] h-9 px-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-[#0084D1] pl-2"
+                    />                      
+                </div>
+                <div>
+                  <input type="checkbox" id="useEachTeamPerson" class="w-4 h-4 border-gray-300 rounded" />
+                  팀 당 최대 인원 수 설정&nbsp;
+                  <input
+                    type="text"
+                    id="useEachTeamPersonNum"
+                    maxlength="5"
+                    placeholder="명"
+                    class="w-[90px] h-9 px-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-[#0084D1] pl-2"
+                    />     
+                </div>                           
+              </div>
+    
+                       
             </label>
             <div class="flex items-center gap-2">
-              <input
-                type="text"
-                id="randomNumberLimit"
-                maxlength="5"
-                placeholder="명"
-                class="w-[90px] h-9 px-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-[#0084D1] pl-2"
-              />
+
               <button id="generateBtn"
                 class="w-auto px-4 py-2 text-sm font-semibold text-white bg-[#0067AC] rounded hover:ring-2 hover:ring-[#0084D1]"
               >
