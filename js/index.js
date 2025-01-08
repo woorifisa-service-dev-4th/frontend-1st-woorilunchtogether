@@ -34,11 +34,6 @@ function team() {
     if(sep_value == 'comma') {
       separator = ",";
     }
-    else {
-      separator= "\n";
-    }
-    
-    console.log(separator)
     teamResult = getRandomTeam({ members, teamMemberNumber, separator });
   } else {
     throw new Error(
@@ -56,10 +51,6 @@ document.getElementById("splitStandard").addEventListener("click", () => {
 });
 
 document.getElementById("splitComma").addEventListener("click", () => {
-  team();
-});
-
-document.getElementById("splitEnter").addEventListener("click", () => {
   team();
 });
 
