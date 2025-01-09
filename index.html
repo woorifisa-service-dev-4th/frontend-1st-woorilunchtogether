@@ -1,133 +1,118 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-      tailwind.config = {
-        content: ["./index.html"],
-        darkMode: "class",
-        theme: {
-          extend: {
-            fontFamily: {
-              nanum: ["Nanum Gothic"],
-            },
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      content: ["./index.html"],
+      darkMode: "class",
+      theme: {
+        extend: {
+          fontFamily: {
+            nanum: ["Nanum Gothic"],
           },
         },
-      };
-    </script>
-  </head>
-  <body>
-    <!-- body wrap-->
-    <div class="flex justify-center">
-      <!-- body -->
-      <div class="max-w-[1280px] min-w-[600px]">
-        <!-- 우리로고 -->
-        <div class="flex justify-center items-center">
-          <img src="./src/asset/image.png" class="w-32 h-auto mt-10" />
-        </div>
-        <!-- 이름름 -->
-        <div class="flex justify-center py-10">
-          <span
-            class="text-7xl text-transparent bg-clip-text bg-gradient-to-r from-[#0067AC] to-[#20C4F4]"
-            >woori... 점심먹자</span
-          >
-        </div>
-        <!-- 이름적는 필드 -->
-        <div class="flex h-5/6 justify-center">
-          <textarea id="members"
-            placeholder="이름을 입력해주세요. (최대 40명 입력 가능, 팀당 최대 4명)"
-            class="h-auto w-full p-4 border border-[#0084D1] rounded-lg focus:outline-none focus:ring-2 focus:ring-[#0084D1] resize-none text-sm text-gray-600"
-          ></textarea>
-        </div>
-        <!-- footer -->
-        <div class="pt-3 flex justify-between items-center">
-          <!-- toggle -->
-          <div class="flex flex-col justify-center items-center">
-            <div>
-              <label class="inline-flex items-center cursor-pointer my-2">
-                <input
-                  type="radio"
-                  id="splitStandard"
-                  name="splitType"
-                  class="sr-only peer"
-                  value="standard"
-                  checked
-                />
-                <div
-                  class="relative w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-[#0067AC]"
-                ></div>
-                <span
-                  class="ms-3 text-sm font-medium text-gray-900 dark:text-gray-300"
-                  >공백 구분</span
-                >
-              </label>
-            </div>
-            <div>
-              <label class="inline-flex items-center cursor-pointer my-2">
-                <input
-                  type="radio"
-                  id="splitComma"
-                  name="splitType"
-                  class="sr-only peer"
-                  value="comma"
-                />
-                <div
-                  class="relative w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-[#0067AC]"
-                ></div>
-                <span
-                  class="ms-3 text-sm font-medium text-gray-900 dark:text-gray-300"
-                  >쉼표 구분</span
-                >
-              </label>
-            </div>
-          </div>
-          <!-- 체크박스 -->
-          <div
-            class="pb-2 right flex gap-2 justify-center items-center"
-          >
-            <div>
-              <label class="pl-2 flex items-center gap-2 text-sm pr-2">
-                <input type="checkbox" id="useRandomNumbers" class="w-4 h-4 border-gray-300 rounded" />
-                    랜덤 숫자로 메이트 추출
-                    <input
-                      type="text"
-                      id="randomNumberLimit"
-                      maxlength="5"
-                      placeholder="명"
-                      class="w-[90px] h-9 px-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-[#0084D1] pl-2"
-                      />        
-              </label>              
-              <label class="pl-2 flex items-center gap-2 text-sm pr-2">
-                    <input type="checkbox" id="useEachTeamPerson" class="w-4 h-4 border-gray-300 rounded py-0" />
-                    팀 당 최대 인원 수 설정&nbsp;
-                    <input
-                      type="text"
-                      id="useEachTeamPersonNum"
-                      maxlength="5"
-                      placeholder="명"
-                      class="w-[90px] h-9 px-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-[#0084D1] pl-2"
-                      />     
-              </label>
-            </div>
-    
-                       
-            </label>
-            <div class="flex items-center gap-2">
+      },
+    };
+  </script>
+</head>
 
-              <button id="generateBtn"
-                class="w-auto px-4 py-2 text-sm font-semibold text-white bg-[#0067AC] rounded hover:ring-2 hover:ring-[#0084D1]"
-              >
-                추출하기
-              </button>
-            </div>
+<body>
+  <!-- body wrap-->
+  <div class="flex justify-center">
+    <!-- body -->
+    <div class="max-w-[1280px] min-w-[600px]">
+      <!-- 우리로고 -->
+      <div class="flex justify-center items-center">
+        <img src="./src/asset/image.png" class="w-32 h-auto mt-10" />
+      </div>
+      <!-- 이름름 -->
+      <div class="flex justify-center py-10">
+        <span class="text-7xl text-transparent bg-clip-text bg-gradient-to-r from-[#0067AC] to-[#20C4F4]">woori...
+          점심먹자</span>
+      </div>
+      <!-- Open 버튼 -->
+      <div class="flex justify-end py-2">
+              <select id="whatClass"
+              class="form-select ms-3 text-sm font-medium text-gray-900 dark:text-gray-300"
+              style="width: auto">
+                <option selected>우리FISA 전용</option>
+                <option value="service">클라우드 서비스</option>
+                <option value="infra">클라우드 엔지니어링</option>
+                <option value="ai">AI 엔지니어링</option>
+              </select>   
+      </div>
+      <!-- 이름적는 필드 -->
+      <div class="relative flex h-5/6 justify-center">
+        <!-- 동적으로 명단이 이곳에 렌더링됨 -->
+        <div id="seatArrangement"
+          class="hidden absolute inset-0 w-full h-full bg-gray-200 bg-opacity-90 z-10 flex justify-between gap-2 rounded-lg">
+          <!-- 그룹 -->
+          <div id="GroupContainer" class="grid grid-cols-8 mx-auto my-auto justify-between  px-0 py-4">
+          </div>
+        </div>
+        <textarea id="members" placeholder="이름을 입력해주세요. (최대 40명 입력 가능, 팀당 최대 4명)"
+          class="h-auto w-full p-4 border border-[#0084D1] rounded-lg focus:outline-none focus:ring-2 focus:ring-[#0084D1] resize-none text-sm text-gray-600"></textarea>
+      </div>
+      <!-- footer -->
+      <div class="pt-3 flex justify-between items-center">
+        <!-- toggle -->
+        <div class="flex flex-col justify-center items-center">
+          <div>
+            <label class="inline-flex items-center cursor-pointer my-2">
+              <input type="radio" id="splitStandard" name="splitType" class="sr-only peer" value="standard" checked />
+              <div
+                class="relative w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-[#0067AC]">
+              </div>
+              <span class="ms-3 text-sm font-medium text-gray-900 dark:text-gray-300">공백 구분</span>
+            </label>
+          </div>
+          <div>
+            <label class="inline-flex items-center cursor-pointer my-2">
+              <input type="radio" id="splitComma" name="splitType" class="sr-only peer" value="comma" />
+              <div
+                class="relative w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-[#0067AC]">
+              </div>
+              <span class="ms-3 text-sm font-medium text-gray-900 dark:text-gray-300">쉼표 구분</span>
+            </label>
+          </div>
+        </div>
+        <!-- 체크박스 -->
+        <div class="pb-2 right flex gap-2 justify-center items-center">
+          <div>
+            <label class="pl-2 flex items-center gap-2 text-sm pr-2">
+              <input type="checkbox" id="useRandomNumbers" class="w-4 h-4 border-gray-300 rounded" />
+              랜덤 숫자로 메이트 추출
+              <input type="text" id="randomNumberLimit" maxlength="5" placeholder="명"
+                class="w-[90px] h-9 px-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-[#0084D1] pl-2" />
+            </label>
+            <label class="pl-2 flex items-center gap-2 text-sm pr-2">
+              <input type="checkbox" id="useEachTeamPerson" class="w-4 h-4 border-gray-300 rounded py-0" />
+              팀 당 최대 인원 수 설정&nbsp;
+              <input type="text" id="useEachTeamPersonNum" maxlength="5" placeholder="명"
+                class="w-[90px] h-9 px-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-[#0084D1] pl-2" />
+            </label>
+          </div>
+
+
+          </label>
+          <div class="flex items-center gap-2">
+
+            <button id="generateBtn"
+              class="w-auto px-4 py-2 text-sm font-semibold text-white bg-[#0067AC] rounded hover:ring-2 hover:ring-[#0084D1]">
+              추출하기
+            </button>
           </div>
         </div>
       </div>
     </div>
+  </div>
 
-    <script type="module" src="./js/index.js"></script>
-  </body>
+  <script type="module" src="./js/index.js"></script>
+</body>
+
 </html>
