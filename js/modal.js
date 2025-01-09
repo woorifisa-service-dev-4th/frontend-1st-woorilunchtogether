@@ -5,12 +5,12 @@ const modalUpperSideMenu = document.getElementById("menu_idx");
 let modalMenuData = document.getElementById("modal_menu_content");
 
 let selectedTeamIndexState = 0;
-const MODAL_BG = "#0078B9";
 
 export function modalOn(modalData, selectTeamIndex) {
   const modal = document.querySelector("#modal");
   const modalClose = document.getElementById("close_btn");
   modal.classList.add("on");
+
   renderModalData(modalData);
 
   const modalUpperSideMenuTag = modalUpperSideMenu.querySelectorAll("li");
@@ -24,6 +24,7 @@ export function modalOn(modalData, selectTeamIndex) {
   
   renderModalEachFoodInfo(renderEachFoodInfo);
   renderKaKaoMap(`${renderEachFoodInfo[1]}`, `${renderEachFoodInfo[0]}`);
+
   modalClose.addEventListener("click", () => {
     modal.classList.remove("on");
   });
@@ -85,4 +86,3 @@ modalUpperSideMenu.addEventListener("click", (event) => {
   renderModalEachFoodInfo(renderEachFoodInfo);
   renderKaKaoMap(`${renderEachFoodInfo[1]}`, `${renderEachFoodInfo[0]}`);
 });
-
