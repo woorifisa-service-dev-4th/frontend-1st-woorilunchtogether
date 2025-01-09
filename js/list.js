@@ -18,6 +18,9 @@ tailwind.config = {
 };
 
 const data = JSON.parse(localStorage.getItem("teamData")) || [];
+export function getInfoData() {
+  return data;
+}
 
 const resultContainer = document.getElementById("result");
 if (data.length === 0) {
@@ -25,6 +28,9 @@ if (data.length === 0) {
 }
 
 let currentIndex = 0;
+export function getCurrentIndex() {
+  return currentIndex;
+}
 
 function renderCards() {
   const cardContainer = document.getElementById("card-container");
@@ -47,7 +53,7 @@ function renderCards() {
         `;
     const names = data[i];
     card.addEventListener("click", function () {
-      modalOn(names);
+      modalOn(names, i);
     });
 
     cardContainer.appendChild(card);
