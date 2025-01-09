@@ -113,7 +113,7 @@ ui {
 #modal #modal_popup #modal_wrap .modal_body .modal_menu_index {
   position: absolute;
   width: 100%;
-  height: 10%;
+  height: 11%;
   top: 0;
 }
 
@@ -122,9 +122,6 @@ ui {
   width: 100%;
   height: 90%;
   bottom: 0;
-  border-bottom-right-radius: 5%;
-  border-bottom-left-radius: 5%;
-  border-top-right-radius: 5%;
 }
 
 #modal #modal_popup #modal_wrap .modal_body .modal_menu_index #menu_box {
@@ -141,6 +138,7 @@ ui {
 }
 #modal #modal_popup #modal_wrap .modal_body #modal_menu_content #middle_left {
   padding-left: 20px;
+  padding-right: 20px;
   color: #ffffff;
 }
 #modal #modal_popup #modal_wrap .modal_body #modal_menu_content #middle_right {
@@ -164,32 +162,25 @@ ui {
 #modal #modal_popup #modal_wrap .modal_body .modal_menu_index #menu_box {
   position: absolute;
   width: 50%;
+  height: 90%;
   bottom: 0;
 }
-#modal #modal_popup #modal_wrap .modal_body .modal_menu_index #menu_box li {
-  background-color: rgba(0, 0, 0, 0.1); /* 검은색에 50% 투명도 */
+
+#modal #modal_popup #modal_wrap .modal_body .modal_menu_index #menu_box #menu_idx {
+  height: 100%;
 }
-#modal
-  #modal_popup
-  #modal_wrap
-  .modal_body
-  .modal_menu_index
-  #menu_box
-  li:first-child {
-  border-top-left-radius: 30%;
-}
+
 #modal #modal_popup #modal_wrap .modal_body .modal_menu_index #menu_box li {
+  font-size: 18px; 
+  display: flex; 
+  align-items: center; 
+  justify-content: center; 
+  background-color: rgba(0, 0, 0, 0.1);
+  color: black;
   width: 25%;
 }
-#modal
-  #modal_popup
-  #modal_wrap
-  .modal_body
-  .modal_menu_index
-  #menu_box
-  li:last-child {
-  border-top-right-radius: 40%;
-}
+
+
 #a {
   padding-right: 50px;
   font-size: 20px;
