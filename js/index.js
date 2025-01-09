@@ -6,6 +6,7 @@ import {
   price_per_person,
   representative_food,
 } from "./database.js";
+import { getRandomNumArray, makeNumArrayWithout } from "./getRandomNumArray.js";
 // Database
 
 let teamResult = [];
@@ -164,16 +165,13 @@ document.getElementById("generateBtn").addEventListener("click", () => {
 
   setTimeout(() => {
     const data = teamResult.map((team) => {
-      const randomIndex = getRanNum(name.length);
+      const randomIndexArray = getRandomNumArray(4, makeNumArrayWithout(name.length, []));
       return {
         team: team.teamName,
         name: team.members.map((member) => member.name),
-        back: [
-          name[randomIndex],
-          address[randomIndex],
-          price_per_person[randomIndex],
-          representative_food[randomIndex],
-        ],
+        back: randomIndexArray.map((idx) => {
+          return Array(name[idx], address[idx], price_per_person[idx], representative_food[idx])
+        })
       };
     });
 
