@@ -3,7 +3,7 @@ import { renderKaKaoMap } from "./kakaomap.js";
 const foodDataEachTeam = JSON.parse(localStorage.getItem("teamData")) || [];
 const modalUpperSideMenu = document.getElementById("menu_idx");
 let modalMenuData = document.getElementById("modal_menu_content");
-
+const MODAL_BG = "#0078B9";
 let selectedTeamIndexState = 0;
 
 export function modalOn(modalData, selectTeamIndex) {
