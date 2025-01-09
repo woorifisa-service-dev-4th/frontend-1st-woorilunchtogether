@@ -5,8 +5,9 @@ const modalUpperSideMenu = document.getElementById("menu_idx");
 let modalMenuData = document.getElementById("modal_menu_content");
 const MODAL_BG = "#0078B9";
 let selectedTeamIndexState = 0;
-
+let currentModalEachMenuIndex;
 export function modalOn(modalData, selectTeamIndex) {
+  currentModalEachMenuIndex = 0;
   const modal = document.querySelector("#modal");
   const modalClose = document.getElementById("close_btn");
   modal.classList.add("on");
@@ -74,6 +75,8 @@ function renderModalData(modalData) {
 
 modalUpperSideMenu.addEventListener("click", (event) => {
   const currentModalUpperSideMenu = event.target;
+  if(currentModalEachMenuIndex === parseInt(currentModalUpperSideMenu.id - 1)) return;
+  currentModalEachMenuIndex = parseInt(currentModalUpperSideMenu.id - 1);
 
   // 모든 li의 배경 초기화
   const modalUpperSideMenuTag = modalUpperSideMenu.querySelectorAll("li");
