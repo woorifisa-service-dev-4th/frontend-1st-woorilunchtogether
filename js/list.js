@@ -4,7 +4,7 @@ import {
   price_per_person,
   representative_food,
 } from "./database.js";
-import { getRanNum } from "./getRandomTeam.js";
+import { randomBelow } from "./accel/random.js";
 import { modalOn } from "./modal.js";
 
 tailwind.config = {
@@ -57,7 +57,7 @@ function renderCards() {
     button.addEventListener("click", function (event) {
       event.stopPropagation();
       const index = this.getAttribute("data-index");
-      const randInt = getRanNum(name.length);
+      const randInt = randomBelow(name.length);
 
       data[index].back[0] = name[randInt];
       data[index].back[1] = address[randInt];
@@ -73,7 +73,7 @@ document.querySelectorAll(".reset-btn").forEach((button) => {
   button.addEventListener("click", function (event) {
     event.stopPropagation();
     const index = this.getAttribute("data-index");
-    const randInt = getRanNum(name.length);
+    const randInt = randomBelow(name.length);
 
     data[index].back[0] = name[randInt];
     data[index].back[1] = address[randInt];
@@ -124,7 +124,7 @@ function renderCard(index) {
     .addEventListener("click", function (event) {
       event.stopPropagation();
       const index = this.getAttribute("data-index");
-      const randInt = getRanNum(name.length);
+      const randInt = randomBelow(name.length);
 
       data[index].back[0] = name[randInt];
       data[index].back[1] = address[randInt];

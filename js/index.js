@@ -1,4 +1,4 @@
-import { getRandomNum, getRandomTeam, getRanNum } from "./getRandomTeam.js";
+import { getRandomIndexArray, getRandomNumberTeam, getRandomTeam } from "./accel/random.js";
 import { getNamesList, getNamesListPG, SERVICE_CALSS_MEMBERS } from "./nameList.js";
 import {
   name,
@@ -6,7 +6,7 @@ import {
   price_per_person,
   representative_food,
 } from "./database.js";
-import { getRandomNumArray, makeNumArrayWithout } from "./getRandomNumArray.js";
+import { getIndexArray } from "./accel/array.js";
 // Database
 
 let teamResult = [];
@@ -33,7 +33,7 @@ function team() {
   } else {
     if (useRandomNumbers && randomNumberLimit) {
       // Generate teams with random numbers
-      teamResult = getRandomNum(randomNumberLimit, teamMemberNumber);
+      teamResult = getRandomNumberTeam(randomNumberLimit, teamMemberNumber);
     } else if (separatorElement) {
       const members = document.getElementById("members").value.trim();
       // Generate teams with member names
@@ -165,7 +165,7 @@ document.getElementById("generateBtn").addEventListener("click", () => {
 
   setTimeout(() => {
     const data = teamResult.map((team) => {
-      const randomIndexArray = getRandomNumArray(4, makeNumArrayWithout(name.length, []));
+      const randomIndexArray = getRandomIndexArray(4, getIndexArray(name.length));
       return {
         team: team.teamName,
         name: team.members.map((member) => member.name),
