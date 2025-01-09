@@ -97,7 +97,7 @@ function renderSeatArrangement(container) {
   const createNameComponent = (group) => {
     group.forEach((member) => {
       // 이름 컴포넌트 생성
-      const nameElement = document.createElement("div");
+      const nameElement = document.createElement("label");
       nameElement.className = `
       name-component ${member.excluded ? "" : "active"}
       flex items-center justify-between
@@ -105,17 +105,17 @@ function renderSeatArrangement(container) {
       bg-gray-100 text-gray-700
       rounded-lg shadow border border-gray-300
       text-sm hover:bg-gray-200
+      cursor-pointer
       w-[100%]
       h-[45px]
     `;
       nameElement.innerHTML = `
         <span>${member.name}</span>
-        <span class="text-blue-300 font-bold cursor-pointer hover:text-blue-300">×</span>
+        <span class="text-blue-300 font-bold  hover:text-blue-300">×</span>
       `;
 
       nameElement.addEventListener("click", () => {
         member.excluded = !member.excluded; // 제외 상태 토글
-        nameElement.classList.toggle("active", !member.excluded); // 클래스 업데이트
 
 
         // 색상 변경 로직
