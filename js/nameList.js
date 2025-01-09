@@ -1,4 +1,4 @@
-export const namelistGroup = [
+export const SERVICE_CALSS_MEMBERS = [
     { name: "윤영찬", excluded: false },
     { name: "권민지", excluded: false },
     { name: "권지윤", excluded: false },
@@ -41,16 +41,23 @@ export const namelistGroup = [
 
 
 // 이름 가나다 순 정렬하는 함수
-export function sortNameList() {
-    namelistGroup.sort((a, b) => a.name.localeCompare(b.name));
+function sortNameList(group) {
+  group.sort((a, b) => a.name.localeCompare(b.name));
   } 
 
-  sortNameList();   
+  sortNameList(SERVICE_CALSS_MEMBERS);   
 
 // 제외되지 않은 이름만 반환하는 함수
 export function getNamesList() {
-    const includedGroup = namelistGroup.filter((m) => !m.excluded).map((m) => m.name);
+    const includedGroup = SERVICE_CALSS_MEMBERS.filter((m) => !m.excluded).map((m) => m.name);
   
     // 그룹 결과 반환
     return [...includedGroup];
   }
+export function getNamesListPG(group) {
+    const includedGroup = group.filter((m) => !m.excluded).map((m) => m.name);
+  
+    // 그룹 결과 반환
+    return [...includedGroup];
+  }
+

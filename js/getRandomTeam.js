@@ -33,7 +33,13 @@ const getRandomNum = (limit, teamMemberNumber) => {
 };
 
 const getRandomTeam = ({ members, teamMemberNumber, separator }) => {
-    const memberList = splitter(members, separator);
+    let memberList = [];
+    if( separator === 'x') {
+        console.log('members:', members);
+        memberList = members;
+    } else {
+        memberList = splitter(members, separator);
+    }
     if (memberList.length > 40) {
         alert('최대 40명까지만 입력 가능합니다.');
         return [];

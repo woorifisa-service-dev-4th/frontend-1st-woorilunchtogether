@@ -1,5 +1,5 @@
 import { getRandomNum, getRandomTeam, getRanNum } from "./getRandomTeam.js";
-import { getNamesList, namelistGroup } from "./nameList.js";
+import { getNamesList, getNamesListPG, SERVICE_CALSS_MEMBERS } from "./nameList.js";
 import {
   name,
   address,
@@ -9,9 +9,11 @@ import {
 // Database
 
 let teamResult = [];
+let namelistGroup = [];
 
 function team() {
   const whitespaceIsStandard = document.getElementById("splitStandard").checked;
+  const classMode = document.getElementById("whatClass");
   const separatorElement = whitespaceIsStandard ? true : false;
   const randomNumberLimit = parseInt(
     document.getElementById("randomNumberLimit").value,
@@ -23,38 +25,65 @@ function team() {
   if (useEachTeamPerson) {
     teamMemberNumber = parseInt(document.getElementById("useEachTeamPersonNum").value, 10);
   }
-
-  if (useRandomNumbers && randomNumberLimit) {
-    // Generate teams with random numbers
-    teamResult = getRandomNum(randomNumberLimit, teamMemberNumber);
-  } else if (separatorElement) {
-    const members = document.getElementById("members").value.trim();
-    // Generate teams with member names
-    const separator = " ";
-    teamResult = getRandomTeam({ members, teamMemberNumber, separator });
-  } else if (!separatorElement) {
-    const members = document.getElementById("members").value;
-    const separator = ",";
-    teamResult = getRandomTeam({ members, teamMemberNumber, separator });
+  if (classMode.options.selectedIndex !== 0) {
+    const separator = "x";
+    const members = getNamesListPG(namelistGroup);
+    teamResult = getRandomTeam({ members, teamMemberNumber, separator});
   } else {
-    throw new Error(
-      "Please provide either a member list or a random number limit."
-    );
+    if (useRandomNumbers && randomNumberLimit) {
+      // Generate teams with random numbers
+      teamResult = getRandomNum(randomNumberLimit, teamMemberNumber);
+    } else if (separatorElement) {
+      const members = document.getElementById("members").value.trim();
+      // Generate teams with member names
+      const separator = " ";
+      teamResult = getRandomTeam({ members, teamMemberNumber, separator });
+    } else if (!separatorElement) {
+      const members = document.getElementById("members").value;
+      const separator = ",";
+      teamResult = getRandomTeam({ members, teamMemberNumber, separator });
+    } else {
+      throw new Error(
+        "Please provide either a member list or a random number limit."
+      );
+    }
   }
+
 
   if (teamResult.length === 0) {
     return; // Exit if no teams are generated
   }
 }
 
-
-document.getElementById("nameListBtn").addEventListener("click", () => {
+document.getElementById("whatClass").addEventListener("change", () => {
+  const classOption = document.getElementById("whatClass");
   const seatArrangement = document.getElementById("seatArrangement");
-  seatArrangement.classList.toggle("hidden");
 
-
-  // 자리배치도 렌더링
-  if (!seatArrangement.classList.contains("hidden")) {
+  if(classOption.options.selectedIndex === 0) {
+    seatArrangement.classList.toggle('hidden');
+  } else {
+    if(seatArrangement.classList.contains("hidden")) {
+      seatArrangement.classList.toggle('hidden');
+      if(classOption.options.selectedIndex === 1) {
+        namelistGroup = SERVICE_CALSS_MEMBERS;
+      } else if(classOption.options.selectedIndex === 2) {
+        namelistGroup = [];
+        // namelistGroup = SERVICE_CALSS_MEMBERS;
+      } else if(classOption.options.selectedIndex === 3) {
+        namelistGroup = [];
+        // namelistGroup = SERVICE_CALSS_MEMBERS;
+      }
+    } else {
+      if(classOption.options.selectedIndex === 1) {
+        namelistGroup = SERVICE_CALSS_MEMBERS;
+      } else if(classOption.options.selectedIndex === 2) {
+        namelistGroup = [];
+        // namelistGroup = SERVICE_CALSS_MEMBERS;
+      } else if(classOption.options.selectedIndex === 3) {
+        namelistGroup = [];
+        // namelistGroup = SERVICE_CALSS_MEMBERS;
+      }      
+    }
     renderSeatArrangement(seatArrangement, namelistGroup);
   }
 });
@@ -63,8 +92,6 @@ function renderSeatArrangement(container) {
   // 컨테이너 가져오기
   const Container = document.getElementById("GroupContainer");
 
-
-  // 각각 초기화
   Container.innerHTML = "";
 
   const createNameComponent = (group) => {
@@ -114,10 +141,18 @@ function renderSeatArrangement(container) {
 }
 
 document.getElementById("splitStandard").addEventListener("click", () => {
+  const seatArrangement = document.getElementById("seatArrangement");
+  if(!seatArrangement.classList.contains("hidden")) {
+    seatArrangement.classList.toggle('hidden');
+  }
   team();
 });
 
 document.getElementById("splitComma").addEventListener("click", () => {
+  const seatArrangement = document.getElementById("seatArrangement");
+  if(!seatArrangement.classList.contains("hidden")) {
+    seatArrangement.classList.toggle('hidden');
+  }  
   team();
 });
 
@@ -128,55 +163,23 @@ document.getElementById("generateBtn").addEventListener("click", () => {
   showLoadingScreen();
 
   setTimeout(() => {
-    const filteredNames = getNamesList(); // 자리배치도에서 제외되지 않은 이름 가져오기
-    console.log(filteredNames);
-    let teamData;
+    const data = teamResult.map((team) => {
+      const randomIndex = getRanNum(name.length);
+      return {
+        team: team.teamName,
+        name: team.members.map((member) => member.name),
+        back: [
+          name[randomIndex],
+          address[randomIndex],
+          price_per_person[randomIndex],
+          representative_food[randomIndex],
+        ],
+      };
+    });
 
-
-    if (filteredNames && filteredNames.length > 0) {
-      // 자리배치도 데이터를 사용해 랜덤 팀 생성
-      const teamMemberNumber = 4; // 팀당 최대 인원
-      const separator = " "; // 구분자
-      teamData = getRandomTeam({
-        members: filteredNames.join(separator),
-        teamMemberNumber,
-        separator,
-      });
-    } else {
-      // 기존 사용자가 입력한 데이터를 기반으로 랜덤 팀 생성
-      const members = document.getElementById("members").value.trim();
-      const separator = document.getElementById("splitStandard").checked ? " " : ",";
-      const teamMemberNumber = 4; // 팀당 최대 인원
-      teamData = getRandomTeam({
-        members,
-        teamMemberNumber,
-        separator,
-      });
-    }
-
-    // 결과 데이터 생성 및 저장
-    if (teamData && teamData.length > 0) {
-      const data = teamData.map((team) => {
-        const randomIndex = getRanNum(name.length);
-        return {
-          team: team.teamName,
-          name: team.members.map((member) => member.name),
-          back: [
-            name[randomIndex],
-            address[randomIndex],
-            price_per_person[randomIndex],
-            representative_food[randomIndex],
-          ],
-        };
-      });
-
-      localStorage.setItem("teamData", JSON.stringify(data));
-      hideLoadingScreen();
-      window.location.href = "list.html";
-    } else {
-      hideLoadingScreen();
-      alert("팀 생성 failed");
-    }
+    localStorage.setItem("teamData", JSON.stringify(data));
+    hideLoadingScreen();
+    window.location.href = "list.html";
   }, 1000);
 });
 
