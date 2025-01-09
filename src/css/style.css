@@ -1,3 +1,7 @@
+body {
+  font-family: "Pretendard", sans-serif;
+}
+
 .card {
   display: inline-grid;
   transition: transform 0.3s;
@@ -63,8 +67,8 @@
 
   top: 50%;
   left: 50%;
-  width: 50%;
-  height: 70%;
+  width: 60%;
+  height: 75%;
   transform: translate(-50%, -50%);
   padding: 20px;
   background: #ffffff;
@@ -74,6 +78,12 @@
   padding: 5px;
   border: none;
   border-radius: 5px;
+  color: #0067ac;
+  font-weight: 400;
+}
+#imgx {
+  width: 60%;
+  height: 60%;
 }
 #modal.on {
   display: block;
@@ -81,6 +91,7 @@
 }
 ui {
   list-style-type: none;
+  background-color: rgba(0, 0, 0, 0.1); /* 검은색에 50% 투명도 */
 }
 
 #modal #modal_popup #modal_wrap {
@@ -91,12 +102,12 @@ ui {
 #modal #modal_popup #modal_wrap #modal_head {
   position: absolute;
   top: 0;
-  height: 20%;
+  height: 10%;
   width: 100%;
 }
 #modal #modal_popup #modal_wrap .modal_body {
   position: absolute;
-  height: 80%;
+  height: 90%;
   width: 100%;
   bottom: 0;
 }
@@ -122,20 +133,29 @@ ui {
   position: absolute;
 }
 #modal #modal_popup #modal_wrap .modal_body #modal_menu_content #name {
-  padding-top: 10px;
-  padding-left: 10px;
+  padding-top: 20px;
+  padding-left: 20px;
+  color: #ffffff;
 }
 #modal #modal_popup #modal_wrap .modal_body #modal_menu_content #middle_left {
-  padding-top: 10px;
-  padding-left: 10px;
+  padding-top: 20px;
+  padding-left: 20px;
+  color: #ffffff;
 }
 #modal #modal_popup #modal_wrap .modal_body #modal_menu_content #middle_right {
   padding-right: 20px;
 }
 #modal #modal_popup #modal_wrap .modal_body #modal_menu_content #map {
   position: absolute;
-  left: 10%;
-  width: 80%;
-  height: 60%;
-  top: 40%;
+  left: 5%;
+  width: 90%;
+  height: 70%;
+  top: 30%;
+}
+
+#result_team {
+  color: #0067ac;
+  font-weight: 600;
+  font-size: larger;
+  font-weight: 700;
 }
