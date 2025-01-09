@@ -4,6 +4,7 @@ const foodDataEachTeam = JSON.parse(localStorage.getItem("teamData")) || [];
 const modalUpperSideMenu = document.getElementById("menu_idx");
 let modalMenuData = document.getElementById("modal_menu_content");
 const MODAL_BG = "#0078B9";
+const MODAL_TEXT = "#ffffff";
 let selectedTeamIndexState = 0;
 let currentModalEachMenuIndex;
 export function modalOn(modalData, selectTeamIndex) {
@@ -19,6 +20,7 @@ export function modalOn(modalData, selectTeamIndex) {
 
   const firstLiTag = document.getElementById("1");
   firstLiTag.style.backgroundColor = MODAL_BG;
+  firstLiTag.style.color = MODAL_TEXT;
 
   let renderEachFoodInfo = foodDataEachTeam[selectTeamIndex].back[0];
   selectedTeamIndexState = selectTeamIndex;
@@ -34,8 +36,10 @@ export function modalOn(modalData, selectTeamIndex) {
 function initalizeModalContentBg(liContainer) {
   liContainer.forEach((liTag) => {
     liTag.style.backgroundColor = ""; // 초기화
+    liTag.style.color = ""; // 초기화
   });
   modalMenuData.style.backgroundColor = MODAL_BG;
+  modalMenuData.style.color = MODAL_TEXT;
   return;
 }
 
@@ -53,9 +57,9 @@ function renderModalEachFoodInfo(eachFoodData) {
       <div class="text-[#0078B9]">0</div>
       <div id="address_info">${eachFoodData[1]}</div>
     </div>
-    <div id="middle_right">
-      <span id="price" class="flex justify-center">${eachFoodData[2]}원</span>
-      <span id="food" class="flex justify-center pr-3">${eachFoodData[3]}</span>
+    <div id="middle_right class="flex justify-end">
+      <span id="price" class="flex justify-end">${eachFoodData[2]}원</span>
+      <span id="food" class="flex justify-end">${eachFoodData[3]}</span>
     </div>
   </div>
   <div id="map" class="flex justify-center w-7 h-7"></div>
@@ -83,6 +87,7 @@ modalUpperSideMenu.addEventListener("click", (event) => {
   if (currentModalUpperSideMenu.id !== "menu_idx") {
     initalizeModalContentBg(modalUpperSideMenuTag);
     currentModalUpperSideMenu.style.backgroundColor = MODAL_BG;
+    currentModalUpperSideMenu.style.color= MODAL_TEXT;
   }
 
   let renderEachFoodInfo = foodDataEachTeam[selectedTeamIndexState].back[currentModalUpperSideMenu.id - 1];
