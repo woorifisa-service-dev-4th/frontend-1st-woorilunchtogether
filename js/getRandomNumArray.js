@@ -10,11 +10,11 @@ const getRandomNumArray = function (setSize, numArr) {
     while(randomSet.size < setSize) {
         const numToAdd = numArr[getRanNum(numArrSize)];
         randomSet.add(numToAdd);
-        if (randomSet.size === setSize) return Araay.from(randomSet);
+        if (randomSet.size === setSize) return Array.from(randomSet);
     }
 }
 
-const makeNumArrWithout = function (maxNum, arrExclude) {
+const makeNumArrayWithout = function (maxNum, arrExclude) {
     const arr = [];
     for(let i = 0; i < maxNum; i++){
         if(arrExclude.indexOf(i) === -1){
@@ -41,4 +41,4 @@ const test = (numArr) => {
     
 }
 
-export { getRandomNumArray, makeNumArrWithout };
+export { getRandomNumArray, makeNumArrayWithout };
