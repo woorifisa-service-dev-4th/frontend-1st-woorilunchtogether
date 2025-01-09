@@ -1,5 +1,5 @@
 import { getRandomNum, getRandomTeam, getRanNum } from "./getRandomTeam.js";
-import { getNamesList, getNamesListPG, SERVICE_CALSS_MEMBERS } from "./nameList.js";
+import { getNamesListPG, SERVICE_CALSS_MEMBERS, CLOUD_ENGINEERING_MEMBERS, AI_MEMBERS } from "./nameList.js";
 import {
   name,
   address,
@@ -29,7 +29,7 @@ function team() {
   if (classMode.options.selectedIndex !== 0) {
     const separator = "x";
     const members = getNamesListPG(namelistGroup);
-    teamResult = getRandomTeam({ members, teamMemberNumber, separator});
+    teamResult = getRandomTeam({ members, teamMemberNumber, separator });
   } else {
     if (useRandomNumbers && randomNumberLimit) {
       // Generate teams with random numbers
@@ -55,71 +55,71 @@ function team() {
     return; // Exit if no teams are generated
   }
 }
-
+// ID가 "whatClass"인 드롭다운 메뉴의 값이 변경되었을 때 실행되는 이벤트 리스너
 document.getElementById("whatClass").addEventListener("change", () => {
+  // "whatClass" 드롭다운 메뉴 요소를 가져옴
   const classOption = document.getElementById("whatClass");
+  // 자리 배치 관련 요소를 가져옴
   const seatArrangement = document.getElementById("seatArrangement");
 
-  if(classOption.options.selectedIndex === 0) {
+  // 드롭다운에서 선택된 값이 첫 번째 옵션(기본값)일 경우
+  if (classOption.options.selectedIndex === 0) {
+    // "seatArrangement" 요소의 숨김 상태를 토글 (보이거나 숨기기)
     seatArrangement.classList.toggle('hidden');
   } else {
-    if(seatArrangement.classList.contains("hidden")) {
+    // "seatArrangement"가 숨겨져 있는 경우 보이도록 설정
+    if (seatArrangement.classList.contains("hidden")) {
       seatArrangement.classList.toggle('hidden');
-      if(classOption.options.selectedIndex === 1) {
-        namelistGroup = SERVICE_CALSS_MEMBERS;
-      } else if(classOption.options.selectedIndex === 2) {
-        namelistGroup = [];
-        // namelistGroup = SERVICE_CALSS_MEMBERS;
-      } else if(classOption.options.selectedIndex === 3) {
-        namelistGroup = [];
-        // namelistGroup = SERVICE_CALSS_MEMBERS;
-      }
-    } else {
-      if(classOption.options.selectedIndex === 1) {
-        namelistGroup = SERVICE_CALSS_MEMBERS;
-      } else if(classOption.options.selectedIndex === 2) {
-        namelistGroup = [];
-        // namelistGroup = SERVICE_CALSS_MEMBERS;
-      } else if(classOption.options.selectedIndex === 3) {
-        namelistGroup = [];
-        // namelistGroup = SERVICE_CALSS_MEMBERS;
-      }      
     }
+
+    // 선택된 드롭다운 메뉴의 값에 따라 그룹 데이터를 설정
+    if (classOption.options.selectedIndex === 1) {
+      namelistGroup = SERVICE_CALSS_MEMBERS; // 서비스 클래스 그룹
+    } else if (classOption.options.selectedIndex === 2) {
+      namelistGroup = CLOUD_ENGINEERING_MEMBERS; // 클라우드 엔지니어링 그룹
+    } else if (classOption.options.selectedIndex === 3) {
+      namelistGroup = AI_MEMBERS; // AI 그룹
+    }
+
+    // 자리 배치를 렌더링 (화면에 표시)
     renderSeatArrangement(seatArrangement, namelistGroup);
   }
 });
 
+// 자리 배치를 화면에 표시하는 함수
 function renderSeatArrangement(container) {
-  // 컨테이너 가져오기
+  // 자리 배치를 표시할 컨테이너 요소 가져오기
   const Container = document.getElementById("GroupContainer");
 
+  // 컨테이너의 내용을 초기화 (기존 내용 제거)
   Container.innerHTML = "";
 
+  // 그룹 내 멤버들을 기반으로 UI 컴포넌트를 생성
   const createNameComponent = (group) => {
     group.forEach((member) => {
-      // 이름 컴포넌트 생성
+      // 이름 표시 컴포넌트 생성
       const nameElement = document.createElement("label");
       nameElement.className = `
-      name-component ${member.excluded ? "" : "active"}
-      flex items-center justify-between
-      px-2 py-1
-      bg-gray-100 text-gray-700
-      rounded-lg shadow border border-gray-300
-      text-sm hover:bg-gray-200
-      cursor-pointer
-      w-[100%]
-      h-[45px]
-    `;
+        name-component ${member.excluded ? "" : "active"}
+        flex items-center justify-between
+        px-2 py-1
+        bg-gray-100 text-gray-700
+        rounded-lg shadow border border-gray-300
+        text-sm hover:bg-gray-200
+        cursor-pointer
+        w-[100%]
+        h-[45px]
+      `;
       nameElement.innerHTML = `
         <span>${member.name}</span>
-        <span class="text-blue-300 font-bold  hover:text-blue-300">×</span>
+        <span class="text-blue-300 font-bold hover:text-blue-300">×</span>
       `;
 
+      // 멤버를 클릭했을 때 제외 상태를 토글하는 이벤트 리스너
       nameElement.addEventListener("click", () => {
-        member.excluded = !member.excluded; // 제외 상태 토글
+        member.excluded = !member.excluded; // 제외 상태를 반전
 
-
-        // 색상 변경 로직
+        // 제외 상태에 따라 색상과 스타일 변경
         if (member.excluded) {
           nameElement.classList.remove("bg-gray-100", "text-gray-700");
           nameElement.classList.add("bg-gray-300", "text-gray-400");
@@ -129,21 +129,20 @@ function renderSeatArrangement(container) {
           nameElement.classList.add("bg-gray-100", "text-gray-700");
           nameElement.querySelector("span:last-child").classList.remove("text-red-500");
         }
-
-
       });
 
+      // 컨테이너에 생성된 요소 추가
       Container.appendChild(nameElement);
     });
   };
 
-  // 그룹 렌더링
+  // 그룹 데이터를 기반으로 자리 배치를 화면에 표시
   createNameComponent(namelistGroup);
 }
 
 document.getElementById("splitStandard").addEventListener("click", () => {
   const seatArrangement = document.getElementById("seatArrangement");
-  if(!seatArrangement.classList.contains("hidden")) {
+  if (!seatArrangement.classList.contains("hidden")) {
     seatArrangement.classList.toggle('hidden');
   }
   team();
@@ -151,9 +150,9 @@ document.getElementById("splitStandard").addEventListener("click", () => {
 
 document.getElementById("splitComma").addEventListener("click", () => {
   const seatArrangement = document.getElementById("seatArrangement");
-  if(!seatArrangement.classList.contains("hidden")) {
+  if (!seatArrangement.classList.contains("hidden")) {
     seatArrangement.classList.toggle('hidden');
-  }  
+  }
   team();
 });
 
