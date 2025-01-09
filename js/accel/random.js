@@ -1,16 +1,6 @@
-const splitter = (str, separator) => {
-    let memberList = [];
-    if(separator === ' ') {
-        memberList = str.split(/\s+/);
-    } else {
-        memberList = str.split(separator);
-    }
-    return memberList;
-}
+export const randomBelow = (max) => Math.floor(Math.random() * (max));
 
-const generateRandomKey = () => Math.random();
-
-const getRandomNum = (limit, teamMemberNumber) => {
+export const getRandomNumberTeam = (limit, teamMemberNumber) => {
     if (!limit || limit <= 0) {
         throw new Error('Limit must be a positive number.');
     }
@@ -32,7 +22,7 @@ const getRandomNum = (limit, teamMemberNumber) => {
     }));
 };
 
-const getRandomTeam = ({ members, teamMemberNumber, separator }) => {
+export const getRandomTeam = ({ members, teamMemberNumber, separator }) => {
     let memberList = [];
     if( separator === 'x') {
         console.log('members:', members);
@@ -52,7 +42,7 @@ const getRandomTeam = ({ members, teamMemberNumber, separator }) => {
 
     const membersWithKey = memberList.map((member) => ({
         name: member.trim(),
-        key: generateRandomKey(),
+        key: Math.random(),
     }));
 
     membersWithKey.sort((a, b) => a.key - b.key);
@@ -71,9 +61,16 @@ const getRandomTeam = ({ members, teamMemberNumber, separator }) => {
     }));
 };
 
-function getRanNum(max) {
-    const randomIndex = Math.floor(Math.random() * (max));  
-    return randomIndex;
+export const getRandomIndexArray = function (setSize, numArr) {
+    const randomSet = new Set();
+    const numArrSize = numArr.length;
+    if (setSize > numArrSize){
+        console.log('뽑으려는 숫자가 후보보다 많습니다!');
+        return numArr;
+    }
+    while(randomSet.size < setSize) {
+        const numToAdd = numArr[randomBelow(numArrSize)];
+        randomSet.add(numToAdd);
+        if (randomSet.size === setSize) return Array.from(randomSet);
+    }
 }
-
-export { getRandomNum, getRandomTeam, getRanNum };

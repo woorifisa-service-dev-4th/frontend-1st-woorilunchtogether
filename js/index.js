@@ -1,8 +1,9 @@
-import { getRandomNum, getRandomTeam, getRanNum } from "./getRandomTeam.js";
-import { getNamesListPG, SERVICE_CALSS_MEMBERS, CLOUD_ENGINEERING_MEMBERS, AI_MEMBERS } from "./nameList.js";
+import { getIndexArray } from "./accel/array.js";
+import { getRandomIndexArray, getRandomNumberTeam, getRandomTeam } from "./accel/random.js";
 import { name, address, price_per_person, representative_food, } from "./database.js";
-import { getRandomNumArray, makeNumArrayWithout } from "./getRandomNumArray.js";
 import { showLoadingScreen, hideLoadingScreen } from "./loading.js";
+import { getNamesList, getNamesListPG, SERVICE_CALSS_MEMBERS } from "./nameList.js";
+
 // Database
 
 let analyzedData = [];
@@ -30,7 +31,7 @@ function splitDataNCreateTeam() {
     // 입력과 상관 없이, 랜덤 숫자를 이용하여 식사 멤버를 구성하고 메뉴 추천을 받는 Case
     if (useRandomNumbers && randomNumberLimit) {
       // Generate teams with random numbers
-      analyzedData = getRandomNum(randomNumberLimit, teamMemberNumber);
+      analyzedData = getRandomNumberTeam(randomNumberLimit, teamMemberNumber);
     } else {
       try {
         // 입력된 멤버 리스트를 공백 구분자를 이용하여 팀을 구성하는 Case
@@ -164,7 +165,7 @@ document.getElementById("generateBtn").addEventListener("click", () => {
 
   setTimeout(() => {
     const data = analyzedData.map((team) => {
-      const chooseFourRandomStore = getRandomNumArray(4, makeNumArrayWithout(name.length, []));
+      const chooseFourRandomStore = getRandomIndexArray(4, getIndexArray(name.length));
       return {
         team: team.teamName,
         name: team.members.map((member) => member.name),
