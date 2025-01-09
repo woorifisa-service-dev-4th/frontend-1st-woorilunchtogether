@@ -1,3 +1,5 @@
+import { splitter } from './array.js';
+
 export const randomBelow = (max) => Math.floor(Math.random() * (max));
 
 export const getRandomNumberTeam = (limit, teamMemberNumber) => {
