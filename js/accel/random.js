@@ -25,7 +25,6 @@ export const getRandomNumberTeam = (limit, teamMemberNumber) => {
 export const getRandomTeam = ({ members, teamMemberNumber, separator }) => {
     let memberList = [];
     if( separator === 'x') {
-        console.log('members:', members);
         memberList = members;
     } else {
         memberList = splitter(members, separator);

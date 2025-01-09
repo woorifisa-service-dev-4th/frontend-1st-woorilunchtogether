@@ -33,8 +33,6 @@ function renderCards() {
                     <div class="h-full w-full outline-none resize-none bg-transparent text-white text-right align-bottom flex flex-col-reverse">${namesHtml}</div>
                 </div>
             </div>
-            
-            
         `;
     const modalContent = data[i];
     card.addEventListener("click", function () {

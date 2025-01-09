@@ -1,10 +1,7 @@
-import { getIndexArray } from "./accel/array.js";
+import { getNamesList, getIndexArray } from "./accel/array.js";
 import { getRandomIndexArray, getRandomNumberTeam, getRandomTeam } from "./accel/random.js";
-import { name, address, price_per_person, representative_food, } from "./database.js";
+import { MARKET_NAME, ADDRESS, PRICE_PRE_PERSON, REPRESENTATIVE_FOOD, SERVICE_CALSS_MEMBERS, CLOUD_ENGINEERING_MEMBERS, AI_MEMBERS} from "./database.js";
 import { showLoadingScreen, hideLoadingScreen } from "./loading.js";
-import { getNamesList, getNamesListPG, SERVICE_CALSS_MEMBERS } from "./nameList.js";
-
-// Database
 
 let analyzedData = [];
 let nameData = [];
@@ -23,7 +20,7 @@ function splitDataNCreateTeam() {
   // 우리FISA 수업 반에서 사용시 선택되는 옵션
   if (classMode.options.selectedIndex !== 0) {
     const separator = "x";
-    const members = getNamesListPG(nameData);
+    const members = getNamesList(nameData);
     analyzedData = getRandomTeam({ members, teamMemberNumber, separator });
   } else {
     // 일반적으로 식사 멤버를 구성할 때 선택되는 옵션
@@ -83,17 +80,17 @@ document.getElementById("whatClass").addEventListener("change", () => {
     }
 
     // 자리 배치를 렌더링 (화면에 표시)
-    renderSeatArrangement(seatArrangement, nameData);
+    renderSeatArrangement();
   }
 });
 
 // 자리 배치를 화면에 표시하는 함수
-function renderSeatArrangement(container) {
+function renderSeatArrangement() {
   // 자리 배치를 표시할 컨테이너 요소 가져오기
-  const Container = document.getElementById("GroupContainer");
+  const container = document.getElementById("GroupContainer");
 
   // 컨테이너의 내용을 초기화 (기존 내용 제거)
-  Container.innerHTML = "";
+  container.innerHTML = "";
 
   // 그룹 내 멤버들을 기반으로 UI 컴포넌트를 생성
   const createNameComponent = (group) => {
@@ -133,7 +130,7 @@ function renderSeatArrangement(container) {
       });
 
       // 컨테이너에 생성된 요소 추가
-      Container.appendChild(nameElement);
+      container.appendChild(nameElement);
     });
   };
 
@@ -165,12 +162,12 @@ document.getElementById("generateBtn").addEventListener("click", () => {
 
   setTimeout(() => {
     const data = analyzedData.map((team) => {
-      const chooseFourRandomStore = getRandomIndexArray(4, getIndexArray(name.length));
+      const chooseFourRandomStore = getRandomIndexArray(4, getIndexArray(MARKET_NAME.length));
       return {
         team: team.teamName,
         name: team.members.map((member) => member.name),
         back: chooseFourRandomStore.map((idx) => {
-          return Array(name[idx], address[idx], price_per_person[idx], representative_food[idx])
+          return Array(MARKET_NAME[idx], ADDRESS[idx], PRICE_PRE_PERSON[idx], REPRESENTATIVE_FOOD[idx])
         })
       };
     });
