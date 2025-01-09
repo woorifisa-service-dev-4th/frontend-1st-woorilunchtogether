@@ -2,38 +2,72 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-
-    </script>
-    <link rel="stylesheet" href="./src/css/style.css">
-
-
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script></script>
+  <link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css" rel="stylesheet" />
+  <link rel="stylesheet" href="./src/css/style.css" />
 </head>
+<div id="modal">
+  <div id="modal_popup">
+    <div id="modal_wrap">
+      <div id="modal_head" class="flex justify-between items-center pb-2">
+        <p id="result_team">1팀 : 김성준</p>
+        <button type="button" id="close_btn" class="text-xl">
+          <img id="imgx" src="./src/asset/Vector61.png" alt="x" />
+        </button>
+      </div>
+      <div class="modal_body">
+        <div class="modal_menu_index">
+          <div id="menu_box">
+            <ui id="menu_idx" class="flex">
+              <li id="1" class="px-3 flex justify-center">1</li>
+              <li id="2" class="px-3 flex justify-center">2</li>
+              <li id="3" class="px-3 flex justify-center">3</li>
+              <li id="4" class="px-3 flex justify-center">4</li>
+            </ui>
+          </div>
+        </div>
+        <div id="modal_menu_content">
+          <!-- <div>음식점 이름</div>
+            <div class="menu_content_middle flex justify-between">
+              <div>위치</div>
+              <div>가격</div>
+            </div>
+            <div class="flex justify-center">맵</div> -->
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 
 <body>
-    <header class="flex justify-center py-16">
-        <span class="text-7xl text-transparent bg-clip-text bg-gradient-to-r from-[#0C73B8]  to-[#20C4F4]">woori...
-            점심먹자</span>
-    </header>
+  <header class="flex justify-center py-16">
+    <a href="/">
+      <span class="text-7xl text-transparent bg-clip-text bg-gradient-to-r from-[#0067AC] to-[#20C4F4]">
+        woori... 점심먹자
+      </span>
+    </a>
+  </header>
 
-    <section id="result-container" class="py-10">
-        <div id="result" class="flex flex-col gap-4 justify-center items-center">
-            <!-- Dynamic content will be appended here -->
-        </div>
-    </section>
+  <section id="result-container" class="py-10">
+    <div id="result" class="flex flex-col gap-4 justify-center items-center">
+      <!-- Dynamic content will be appended here -->
+    </div>
+  </section>
 
-    <section class="flex justify-center items-center gap-5">
-        <button class="inline-block border-[#0C73B8] w-12 h-12 border-l-4 border-b-4 rotate-45" id="prev"></button>
-        <div id="card-container"></div>
-        <button class="inline-block border-[#0C73B8] w-12 h-12 border-l-4 border-b-4 rotate-[-135deg]"
-            id="next"></button>
-    </section>
-
+  <section class="flex justify-center items-center gap-5">
+    <button class="inline-block border-[#0C73B8] w-12 h-12 border-l-4 border-b-4 rotate-45" id="prev"></button>
+    <div id="card-container"></div>
+    <button class="inline-block border-[#0C73B8] w-12 h-12 border-l-4 border-b-4 rotate-[-135deg]" id="next"></button>
+  </section>
+  <!-- <div id="map" class="w-0 h-0" ></div> -->
 </body>
 <script type="module" src="./js/list.js"></script>
+<script type="module" src="./js/modal.js"></script>
+<script type="text/javascript"
+  src="https://dapi.kakao.com/v2/maps/sdk.js?appkey=cb1c7f0ec59e059010faf3b1f275bf07&libraries=services"></script>
 
 </html>
