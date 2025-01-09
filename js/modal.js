@@ -19,14 +19,14 @@ ff.addEventListener("click", (event) => {
     allLi.forEach((li) => {
       li.style.backgroundColor = ""; // 초기화
     });
-    clickedLi.style.backgroundColor = "lightblue";
+    clickedLi.style.backgroundColor = "#0078B9";
   }
 
   menuIndo = document.getElementById("modal_menu_content");
-  menuIndo.style.backgroundColor = "lightblue";
+  menuIndo.style.backgroundColor = "#0078B9";
   let renderedFoodInfo = renderedFoodInfolist[clickedLi.id - 1];
   menuIndo.innerHTML = `
-            <div id="name">${renderedFoodInfo.name}</div>
+            <div id="name" class="text-2xl">${renderedFoodInfo.name}</div>
             <div id="middle_left" class="menu_content_middle flex justify-between">
               <div>${renderedFoodInfo.address}</div>
               <div id="middle_right">
@@ -67,11 +67,11 @@ export function modalOn(names) {
     li.style.backgroundColor = ""; // 초기화
   });
   const lili = document.getElementById("1");
-  lili.style.backgroundColor = "lightblue";
-  menuIndo.style.backgroundColor = "lightblue";
+  lili.style.backgroundColor = "#0078B9";
+  menuIndo.style.backgroundColor = "#0078B9";
   let renderedFoodInfo = renderedFoodInfolist[0];
   menuIndo.innerHTML = `
-            <div id="name">${renderedFoodInfo.name}</div>
+            <div id="name" class="text-2xl">${renderedFoodInfo.name}</div>
             <div id="middle_left" class="menu_content_middle flex justify-between">
               <div>${renderedFoodInfo.address}</div>
               <div id="middle_right">
